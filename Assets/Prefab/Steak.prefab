@@ -102,15 +102,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79b1d756fd5871d4dbb5d3ecdc7902b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentCookState: 0
+  CookStateSprite:
+  - {fileID: 21300000, guid: 0b535ce0e6006ea41bc618665a8a24c9, type: 3}
+  - {fileID: 21300000, guid: 1e8cfceae31f2cf43a6c5b9c3132db72, type: 3}
+  - {fileID: 21300000, guid: 8ff7a57d4b3d5a141b22b8b19681c224, type: 3}
+  - {fileID: 21300000, guid: 31b3f64c609368c49b428f7707fa2798, type: 3}
+  - {fileID: 21300000, guid: 075b100636e74f246bfff62f02bed88a, type: 3}
+  - {fileID: 21300000, guid: 2ebec9cfae8a17147a9ef3a55fdf3eca, type: 3}
   steakRenderer: {fileID: 2379584422628087443}
   cpuTemp: {fileID: 0}
   cookTime: 0
   requiredTime: 10
-  rawSprite: {fileID: 21300000, guid: 0b535ce0e6006ea41bc618665a8a24c9, type: 3}
-  mediumRareSprite: {fileID: 21300000, guid: 25a2a7fffe6e4bb4fad3610f98642ea0, type: 3}
-  mediumSprite: {fileID: 21300000, guid: 059dcb0c51c2eb440ae74abb3f5d91ef, type: 3}
-  welldoneSprite: {fileID: 21300000, guid: e19884f9d5bf2a14f890fa971f2f77e1, type: 3}
-  overcookedSprite: {fileID: 21300000, guid: 5f783391e1d99cd49a5e9c6eafd106dd, type: 3}
 --- !u!114 &8904517775657146898
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class CheckoutPoint : MonoBehaviour
 {
+    GameManager GM;
     // Start is called before the first frame update
     void Start()
     {
-
+        GM = FindObjectOfType<GameManager>(); 
     }
 
     // Update is called once per frame
@@ -18,19 +19,11 @@ public class CheckoutPoint : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Collided with: " + collision.tag);
-        if (collision.tag == "wellDone")
-        {
-            GameManager GM = FindObjectOfType<GameManager>();
-            GM.AddScore(10);
-
-        }
-
         SteakState steak = collision.GetComponent<SteakState>();
         if (steak != null)
         {
             steak.CheckOut();
+            GM.NewOrder();
         }
-
     }
 }

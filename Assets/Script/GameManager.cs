@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
 
     public Transform StakeSpawn;
     public GameObject Steak;
+    public OrderPanel orderPanel;
+
+    public SteakState.SteakCookState targetState;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +27,12 @@ public class GameManager : MonoBehaviour
     public void SpawnNewSteak()
     {
         Instantiate(Steak, StakeSpawn.position, Quaternion.identity);
+    }
+
+    public void NewOrder()
+    {
+        targetState = (SteakState.SteakCookState)Random.Range(1, 4);
+        orderPanel.NewOrder(targetState);
     }
 
     public void AddScore(int points)

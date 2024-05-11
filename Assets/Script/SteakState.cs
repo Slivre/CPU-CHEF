@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class SteakState : MonoBehaviour
 {
+    public enum SteakCookState { Raw, Rare, MediumRare, Medium, WellDone,Overcooked}
+    public SteakCookState currentCookState = SteakCookState.Raw;
+
+    public Sprite[] CookStateSprite;
+
     GameManager GM;
     float cookPercent;
 
@@ -13,12 +18,6 @@ public class SteakState : MonoBehaviour
 
     public float cookTime = 0; 
     public float requiredTime = 10;
-
-    public Sprite rawSprite;
-    public Sprite mediumRareSprite;
-    public Sprite mediumSprite;
-    public Sprite welldoneSprite;
-    public Sprite overcookedSprite;
 
     private void Start()
     {
@@ -38,6 +37,7 @@ public class SteakState : MonoBehaviour
 
             
             cookPercent = cookTime / requiredTime;
+
             UpdateSteakSprite(cookPercent);
         }
     }
@@ -60,31 +60,31 @@ public class SteakState : MonoBehaviour
 
     void UpdateSteakSprite(float cookPercent)
     {
-        if (cookPercent < 0.25f)
+        if (cookPercent < 0.2f)
         {
-            steakRenderer.sprite = rawSprite;
-            gameObject.tag = "raw";
+            currentCookState = SteakCookState.Raw;
         }
-        else if (cookPercent < 0.5f)
+        else if (cookPercent < 0.4f)
         {
-            steakRenderer.sprite = mediumRareSprite;
-            gameObject.tag = "mediumRare";
+            currentCookState = SteakCookState.Rare;
         }
-        else if (cookPercent < 0.75f)
+        else if (cookPercent < 0.6f)
         {
-            steakRenderer.sprite = mediumSprite;
-            gameObject.tag = "Medium";
+            currentCookState = SteakCookState.MediumRare;
+        }
+        else if (cookPercent < 0.8f)
+        {
+            currentCookState = SteakCookState.Medium;
         }
         else if (cookPercent < 1f)
         {
-            steakRenderer.sprite = welldoneSprite;
-            gameObject.tag = "wellDone";
+            currentCookState = SteakCookState.WellDone;
         }
         else
         {
-            steakRenderer.sprite = overcookedSprite;
-            gameObject.tag = "overcooked";
+            currentCookState = SteakCookState.Overcooked;
         }
+        steakRenderer.sprite = CookStateSprite[(int)currentCookState];
     }
 
     public void CheckOut()
@@ -92,5 +92,10 @@ public class SteakState : MonoBehaviour
         Debug.Log("Checkout");
         GM.SpawnNewSteak();
         Destroy(gameObject);
+
+        if(currentCookState == GM.targetState)
+        {
+            GM.AddScore(10);
+        }
     }
 }
