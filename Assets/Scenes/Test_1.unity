@@ -225,7 +225,33 @@ MonoBehaviour:
   SteakImage: {fileID: 931319971}
   currentOrderNumber: 2234
   CustomerNames:
+  - Gaberial
+  - Steve
+  - Jimmy
+  - Zephyr
+  - Yubing
+  - Lawrence
+  - Tom
   - Bob
+  - Jack
+  - Jenny
+  - Lucifer
+  - Thor
+  - Jaina
+  - Dick
+  - Lee
+  - Bruce
+  - Diana
+  - Clark
+  - Peter
+  - Dave
+  - MeowMeow
+  - Yamako
+  - Vincent
+  - Kenny
+  - Cartmen
+  - Stan
+  - Zoe
   CookStateSprite:
   - {fileID: 21300000, guid: 0b535ce0e6006ea41bc618665a8a24c9, type: 3}
   - {fileID: 21300000, guid: 1e8cfceae31f2cf43a6c5b9c3132db72, type: 3}
