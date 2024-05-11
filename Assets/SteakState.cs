@@ -7,7 +7,8 @@ public class SteakCooking : MonoBehaviour
     float cookPercent;
 
     public SpriteRenderer steakRenderer; 
-    public CPUTemp cpuTemp; 
+    public CPUTemp cpuTemp;
+    private bool isCooking = false;
 
     public float cookTime = 0; 
     public float requiredTime = 10; 
@@ -18,7 +19,7 @@ public class SteakCooking : MonoBehaviour
 
     void Update()
     {
-        if (cpuTemp != null)
+        if (isCooking && cpuTemp != null)
         {
             
             float temperature = cpuTemp.GetCurrentTemperature(); 
@@ -36,6 +37,22 @@ public class SteakCooking : MonoBehaviour
             {
                 steakRenderer.color = Color.Lerp(cookedColor, overcookedColor, cookPercent - 1);
             }
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "cpu")
+        {
+            isCooking = true; 
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "cpu")
+        {
+            isCooking = false;
         }
     }
 
