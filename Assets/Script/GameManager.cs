@@ -25,4 +25,10 @@ public class GameManager : MonoBehaviour
     {
         Instantiate(Steak, StakeSpawn.position, Quaternion.identity);
     }
+
+    public void AddScore(int points)
+    {
+        Score += points; 
+        Debug.Log("Score: " + Score);
+    }
 }

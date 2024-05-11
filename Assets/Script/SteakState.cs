@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SteakCooking : MonoBehaviour
+public class SteakState : MonoBehaviour
 {
     GameManager GM;
     float cookPercent;
@@ -63,22 +63,27 @@ public class SteakCooking : MonoBehaviour
         if (cookPercent < 0.25f)
         {
             steakRenderer.sprite = rawSprite;
+            gameObject.tag = "raw";
         }
         else if (cookPercent < 0.5f)
         {
             steakRenderer.sprite = mediumRareSprite;
+            gameObject.tag = "mediumRare";
         }
         else if (cookPercent < 0.75f)
         {
             steakRenderer.sprite = mediumSprite;
+            gameObject.tag = "Medium";
         }
         else if (cookPercent < 1f)
         {
             steakRenderer.sprite = welldoneSprite;
+            gameObject.tag = "wellDone";
         }
         else
         {
             steakRenderer.sprite = overcookedSprite;
+            gameObject.tag = "overcooked";
         }
     }
 

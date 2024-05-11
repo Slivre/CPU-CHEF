@@ -7,7 +7,7 @@ public class CheckoutPoint : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -18,12 +18,19 @@ public class CheckoutPoint : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision);
-        var Steak = collision.GetComponent<SteakCooking>();
-        if (Steak != false)
+        Debug.Log("Collided with: " + collision.tag);
+        if (collision.tag == "wellDone")
         {
-            Steak.CheckOut();
-        }
-    }
+            GameManager GM = FindObjectOfType<GameManager>();
+            GM.AddScore(10);
 
+        }
+
+        SteakState steak = collision.GetComponent<SteakState>();
+        if (steak != null)
+        {
+            steak.CheckOut();
+        }
+
+    }
 }
