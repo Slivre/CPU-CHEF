@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4738637809187259392}
   - component: {fileID: 3043043104311106101}
   - component: {fileID: 9052093993415017393}
+  - component: {fileID: 6218023817121075676}
   m_Layer: 0
   m_Name: Steak
   m_TagString: Untagged
@@ -32,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -2.56, z: 0}
-  m_LocalScale: {x: 2.7374713, y: 1.5763894, z: 0.71716}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -57,7 +58,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 1c4b2c638d4da4049ba05b762b455614, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -77,9 +78,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.6792453, g: 0.33591923, b: 0.3176524, a: 1}
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: 0b535ce0e6006ea41bc618665a8a24c9, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -105,6 +106,11 @@ MonoBehaviour:
   cpuTemp: {fileID: 0}
   cookTime: 0
   requiredTime: 10
+  rawSprite: {fileID: 21300000, guid: 0b535ce0e6006ea41bc618665a8a24c9, type: 3}
+  mediumRareSprite: {fileID: 21300000, guid: 25a2a7fffe6e4bb4fad3610f98642ea0, type: 3}
+  mediumSprite: {fileID: 21300000, guid: 059dcb0c51c2eb440ae74abb3f5d91ef, type: 3}
+  welldoneSprite: {fileID: 21300000, guid: e19884f9d5bf2a14f890fa971f2f77e1, type: 3}
+  overcookedSprite: {fileID: 21300000, guid: 5f783391e1d99cd49a5e9c6eafd106dd, type: 3}
 --- !u!114 &473280384782698409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,18 +218,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.17309998}
+  m_Offset: {x: 0.2727239, y: 0.33673438}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 8.538893, y: 6.4}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.6538}
+  m_Size: {x: 3.989056, y: 1.9410563}
   m_EdgeRadius: 0
 --- !u!50 &9052093993415017393
 Rigidbody2D:
@@ -252,3 +258,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &6218023817121075676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7296386988797512547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cb6ea52514e0f2478d2d18a2dcdefb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

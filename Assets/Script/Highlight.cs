@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class Highlight : MonoBehaviour
 {
+    Color InitialColor;
+    Material Mat;
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<Renderer>().material.SetFloat("_Thickness", 0f);
+        Mat = GetComponent<Renderer>().material;
+        InitialColor = Mat.GetColor("_Color");
+        Mat.SetFloat("_Thickness", 0f);
+        Mat.SetColor("_Color", new Color(0,0,0,0));
     }
 
     // Update is called once per frame
@@ -18,11 +23,13 @@ public class Highlight : MonoBehaviour
 
     public void OnMouseOver()
     {
-        GetComponent<Renderer>().material.SetFloat("_Thickness", 0.01f);
+        Mat.SetFloat("_Thickness", 0.01f);
+        Mat.SetColor("_Color", InitialColor);
     }
 
     public void OnMouseExit()
     {
-        GetComponent<Renderer>().material.SetFloat("_Thickness", 0f);
+        Mat.SetFloat("_Thickness", 0f);
+        Mat.SetColor("_Color", new Color(0, 0, 0, 0));
     }
 }
