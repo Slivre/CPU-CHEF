@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SteakCooking : MonoBehaviour
 {
+    GameManager GM;
     float cookPercent;
 
     public SpriteRenderer steakRenderer; 
@@ -15,7 +16,13 @@ public class SteakCooking : MonoBehaviour
 
     private Color rawColor = Color.red; 
     private Color cookedColor = Color.yellow; 
-    private Color overcookedColor = Color.black; 
+    private Color overcookedColor = Color.black;
+
+    private void Start()
+    {
+        GM = FindObjectOfType<GameManager>();
+        cpuTemp = FindObjectOfType<CPUTemp>();
+    }
 
     void Update()
     {
@@ -59,5 +66,7 @@ public class SteakCooking : MonoBehaviour
     public void CheckOut()
     {
         Debug.Log("Checkout");
+        GM.SpawnNewSteak();
+        Destroy(gameObject);
     }
 }
