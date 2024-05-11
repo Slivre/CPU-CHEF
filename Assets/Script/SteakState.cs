@@ -90,12 +90,13 @@ public class SteakState : MonoBehaviour
     public void CheckOut()
     {
         Debug.Log("Checkout");
-        GM.SpawnNewSteak();
-        Destroy(gameObject);
-
-        if(currentCookState == GM.targetState)
+        if (currentCookState == GM.targetState)
         {
             GM.AddScore(10);
         }
+
+        GM.SpawnNewSteak();
+        GM.NewOrder();
+        Destroy(gameObject);
     }
 }

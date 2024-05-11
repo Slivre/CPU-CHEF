@@ -23,7 +23,6 @@ public class CheckoutPoint : MonoBehaviour
         if (steak != null)
         {
             steak.CheckOut();
-            GM.NewOrder();
         }
     }
 }
