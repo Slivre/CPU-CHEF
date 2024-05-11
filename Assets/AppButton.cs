@@ -11,7 +11,7 @@ public class AppButton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        cpuTemp = FindObjectOfType<CPUTemp>();
     }
 
     // Update is called once per frame
