@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SteakCooking : MonoBehaviour
 {
+    float cookPercent;
+
     public SpriteRenderer steakRenderer; 
     public CPUTemp cpuTemp; 
 
@@ -25,7 +27,7 @@ public class SteakCooking : MonoBehaviour
             cookTime += Time.deltaTime * temperature / 100;
 
             
-            float cookPercent = cookTime / requiredTime;
+            cookPercent = cookTime / requiredTime;
             if (cookPercent < 1)
             {
                 steakRenderer.color = Color.Lerp(rawColor, cookedColor, cookPercent);
@@ -35,5 +37,10 @@ public class SteakCooking : MonoBehaviour
                 steakRenderer.color = Color.Lerp(cookedColor, overcookedColor, cookPercent - 1);
             }
         }
+    }
+
+    public void CheckOut()
+    {
+        
     }
 }
