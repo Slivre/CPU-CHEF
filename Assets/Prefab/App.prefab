@@ -203,6 +203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 1797956779332255599}
+  isUI: 1
 --- !u!114 &4093944385267392641
 MonoBehaviour:
   m_ObjectHideFlags: 0

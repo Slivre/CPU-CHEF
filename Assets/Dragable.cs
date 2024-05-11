@@ -8,7 +8,9 @@ public class Dragable : MonoBehaviour
     Vector3 MousePos;
     Vector3 MousePosOnClick;
 
-    Vector3 ClickPosOffset;
+    Vector3 ClickPosOffset = Vector3.zero;
+
+    public bool isUI;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,12 +26,29 @@ public class Dragable : MonoBehaviour
     public void InitializeDrag()
     {
         MousePosOnClick = MousePos;
-        Debug.Log($"InitialMousePos {MousePosOnClick}");
         ClickPosOffset = parent.transform.position - MousePosOnClick;
+
+        ClickPosOffset = Camera.main.ScreenToWorldPoint(MousePos) - parent.transform.position;
     }
 
     public void Drag()
     {
-        parent.transform.position = MousePos + ClickPosOffset;
+       //parent.transform.position = MousePos + ClickPosOffset;
+
+        parent.transform.position = Camera.main.ScreenToWorldPoint(MousePos) - ClickPosOffset;
+        Rigidbody2D rb = parent.GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.gravityScale = 0;
+        }
+    }
+
+    public void EndDrag()
+    {
+        Rigidbody2D rb = parent.GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.gravityScale = 3;
+        }
     }
 }
