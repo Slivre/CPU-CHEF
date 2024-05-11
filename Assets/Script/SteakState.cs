@@ -12,11 +12,13 @@ public class SteakCooking : MonoBehaviour
     private bool isCooking = false;
 
     public float cookTime = 0; 
-    public float requiredTime = 10; 
+    public float requiredTime = 10;
 
-    private Color rawColor = Color.red; 
-    private Color cookedColor = Color.yellow; 
-    private Color overcookedColor = Color.black;
+    public Sprite rawSprite;
+    public Sprite mediumRareSprite;
+    public Sprite mediumSprite;
+    public Sprite welldoneSprite;
+    public Sprite overcookedSprite;
 
     private void Start()
     {
@@ -36,14 +38,7 @@ public class SteakCooking : MonoBehaviour
 
             
             cookPercent = cookTime / requiredTime;
-            if (cookPercent < 1)
-            {
-                steakRenderer.color = Color.Lerp(rawColor, cookedColor, cookPercent);
-            }
-            else
-            {
-                steakRenderer.color = Color.Lerp(cookedColor, overcookedColor, cookPercent - 1);
-            }
+            UpdateSteakSprite(cookPercent);
         }
     }
 
@@ -60,6 +55,30 @@ public class SteakCooking : MonoBehaviour
         if (other.gameObject.tag == "cpu")
         {
             isCooking = false;
+        }
+    }
+
+    void UpdateSteakSprite(float cookPercent)
+    {
+        if (cookPercent < 0.25f)
+        {
+            steakRenderer.sprite = rawSprite;
+        }
+        else if (cookPercent < 0.5f)
+        {
+            steakRenderer.sprite = mediumRareSprite;
+        }
+        else if (cookPercent < 0.75f)
+        {
+            steakRenderer.sprite = mediumSprite;
+        }
+        else if (cookPercent < 1f)
+        {
+            steakRenderer.sprite = welldoneSprite;
+        }
+        else
+        {
+            steakRenderer.sprite = overcookedSprite;
         }
     }
 
