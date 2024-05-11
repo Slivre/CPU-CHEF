@@ -41,6 +41,6 @@ public class SteakCooking : MonoBehaviour
 
     public void CheckOut()
     {
-        
+        Debug.Log("Checkout");
     }
 }
