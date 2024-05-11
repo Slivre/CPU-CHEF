@@ -6,6 +6,8 @@ public class AppButton : MonoBehaviour
 {
     public CPUTemp cpuTemp;
     public float TempModifier;
+
+    public GameObject APP;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,15 +20,23 @@ public class AppButton : MonoBehaviour
         
     }
 
-    public void IncreaseTemp()
+    public void OpenAPP()
     {
-        float TempMod = TempModifier;
-        Debug.Log($"TempMod: {TempMod}");
+        if (!APP.activeInHierarchy)
+        {
+            float TempMod = TempModifier;
+            cpuTemp.ModifiyTargetTemp(TempMod);
+            APP.SetActive(true);
+        }
     }
 
-    public void DecreaseTemp()
+    public void CloseApp()
     {
-        float TempMod = -TempModifier;
-        Debug.Log($"TempMod: {TempMod}");
+        if (APP.activeInHierarchy)
+        {
+            float TempMod = -TempModifier;
+            cpuTemp.ModifiyTargetTemp(TempMod);
+            APP.SetActive(false);
+        }
     }
 }
