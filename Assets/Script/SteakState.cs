@@ -83,6 +83,7 @@ public class SteakState : MonoBehaviour
         {
             Destroy(gameObject);
             GM.SpawnNewSteak();
+            collision.gameObject.GetComponent<AudioSource>().Play();
         }
     }
 
