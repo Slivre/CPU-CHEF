@@ -20,7 +20,7 @@ public class CrashProgressBar : MonoBehaviour
     void Update()
     {
         float safeTemp = cpuTemp.MaxTemp - cpuTemp.MinTemp;
-        TempPercecntage = (cpuTemp.CPUTemperture -safeTemp) / safeTemp;
+        TempPercecntage = (cpuTemp.CPUTemperture -cpuTemp.MinTemp) / safeTemp;
 
         slider.value = TempPercecntage;
     }

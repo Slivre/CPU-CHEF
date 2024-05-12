@@ -22,19 +22,30 @@ public class GameManager : MonoBehaviour
 
     public float orderTime = 10.0f;
     public float timer;
-    bool PauseTimer = true;
+    public bool OrderClosed = true;
     public float newOrderDelay;
 
     public float TempIncreaseInterval = 1f;
-    public float CurrentInterval;
+    float CurrentInterval;
+
+    public AudioClip newOrderSFX;
+    AudioSource audioSource;
+
+    public bool Paused;
+    public GameObject PauseScreen;
 
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("NewOrder",2f);
         cpuTemp = FindObjectOfType<CPUTemp>();
         SucessIcon.SetActive(false);
         FailIcon.SetActive(false);
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    public void GameStart()
+    {
+        Invoke("NewOrder", 3f);
     }
 
     // Update is called once per frame
@@ -50,13 +61,13 @@ public class GameManager : MonoBehaviour
             Restart();
         }
 
-        if (!PauseTimer)
+        if (!OrderClosed)
         {
             timer -= Time.deltaTime;
             if (timer <= 0)
             {
                 CompleteOrder(false);
-                PauseTimer = true;
+                OrderClosed = true;
             }
         }
 
@@ -67,6 +78,17 @@ public class GameManager : MonoBehaviour
             CurrentInterval = 0;
         }
 
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            pauseGame();
+        }
+        Time.timeScale = Paused ? 0 : 1;
+        PauseScreen.SetActive(Paused);
+    }
+
+    public void pauseGame()
+    {
+        Paused = !Paused;
     }
 
     public void ChangeTemperture()
@@ -97,18 +119,21 @@ public class GameManager : MonoBehaviour
 
     public void NewOrder()
     {
+        audioSource.clip = newOrderSFX;
+        audioSource.Play();
+
         SucessIcon.SetActive(false);
         FailIcon.SetActive(false);
 
         timer = orderTime;
-        PauseTimer = false;
+        OrderClosed = false;
         targetState = (SteakState.SteakCookState)Random.Range(1, 4);
         orderPanel.NewOrder(targetState);
     }
 
     public void CompleteOrder(bool Sucess)
     {
-        PauseTimer = true;
+        OrderClosed = true;
         Invoke("NewOrder", newOrderDelay);
         if (Sucess)
         {
@@ -141,5 +166,10 @@ public class GameManager : MonoBehaviour
     public void Restart()
     {
         CrashScreen.SetActive(false);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }

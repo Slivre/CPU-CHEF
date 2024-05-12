@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class CheckoutPoint : MonoBehaviour
 {
+    GameManager GM;
+
     public GameObject SteakPlate;
     public Transform steakSpawn;
     // Start is called before the first frame update
     void Start()
     {
-
+        GM = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -21,7 +23,7 @@ public class CheckoutPoint : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         SteakState steak = collision.GetComponent<SteakState>();
-        if (steak != null && collision.isTrigger!=true)
+        if (steak != null && collision.isTrigger!=true && !GM.OrderClosed)
         {
             steak.CheckOut();
             GameObject NewSteakPlate = Instantiate(SteakPlate, Vector3.zero,Quaternion.identity);
