@@ -1450,6 +1450,7 @@ MonoBehaviour:
   Title: {fileID: 1265802587}
   BGM: {fileID: 785923627}
   ScoreDisplayer: {fileID: 287335823}
+  Instructions: {fileID: 711107921}
 --- !u!114 &221435008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2787,6 +2788,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &711107921 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4912487749391800247, guid: 543749a1d97192e4ba52905401031dd2, type: 3}
+  m_PrefabInstance: {fileID: 1147227635}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &765757863
 GameObject:
   m_ObjectHideFlags: 0
@@ -4489,6 +4495,63 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OverheatColor: {r: 1, g: 0.3, b: 0.3, a: 1}
+--- !u!1001 &1147227635
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4912487749391800247, guid: 543749a1d97192e4ba52905401031dd2, type: 3}
+      propertyPath: m_Name
+      value: InstructionAnim
+      objectReference: {fileID: 0}
+    - target: {fileID: 7567644345118265227, guid: 543749a1d97192e4ba52905401031dd2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.08254051
+      objectReference: {fileID: 0}
+    - target: {fileID: 7567644345118265227, guid: 543749a1d97192e4ba52905401031dd2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.6323142
+      objectReference: {fileID: 0}
+    - target: {fileID: 7567644345118265227, guid: 543749a1d97192e4ba52905401031dd2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7567644345118265227, guid: 543749a1d97192e4ba52905401031dd2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7567644345118265227, guid: 543749a1d97192e4ba52905401031dd2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7567644345118265227, guid: 543749a1d97192e4ba52905401031dd2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7567644345118265227, guid: 543749a1d97192e4ba52905401031dd2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7567644345118265227, guid: 543749a1d97192e4ba52905401031dd2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7567644345118265227, guid: 543749a1d97192e4ba52905401031dd2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7567644345118265227, guid: 543749a1d97192e4ba52905401031dd2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 543749a1d97192e4ba52905401031dd2, type: 3}
 --- !u!1 &1160990937
 GameObject:
   m_ObjectHideFlags: 0
@@ -5235,7 +5298,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1265802588
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6494,7 +6557,7 @@ GameObject:
   - component: {fileID: 1683812886}
   - component: {fileID: 1683812885}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: TopCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9458,6 +9521,7 @@ SceneRoots:
   - {fileID: 112544673}
   - {fileID: 365723649}
   - {fileID: 663975685}
+  - {fileID: 1683812888}
   - {fileID: 256013510}
   - {fileID: 1871589339}
   - {fileID: 1132928241}
@@ -9479,4 +9543,4 @@ SceneRoots:
   - {fileID: 1197257026}
   - {fileID: 1813155354}
   - {fileID: 785923628}
-  - {fileID: 1683812888}
+  - {fileID: 1147227635}
