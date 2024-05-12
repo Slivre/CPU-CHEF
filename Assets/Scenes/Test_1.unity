@@ -497,6 +497,8 @@ MonoBehaviour:
   Steak: {fileID: 9005242769058719281, guid: b51b1aa4ddb189b43a9c2f16b6e70fd3, type: 3}
   orderPanel: {fileID: 56421801}
   targetState: 0
+  orderTime: 10
+  timer: 0
 --- !u!4 &153623900
 Transform:
   m_ObjectHideFlags: 0
@@ -1025,7 +1027,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -128.98674, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2855,8 +2857,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 294.59702, y: 181.11035}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 294.59702, y: 179.29}
+  m_SizeDelta: {x: 200, y: 46.821}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1343557201
 MonoBehaviour:
@@ -4421,6 +4423,7 @@ GameObject:
   - component: {fileID: 2098304606}
   - component: {fileID: 2098304608}
   - component: {fileID: 2098304607}
+  - component: {fileID: 2098304609}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -4444,7 +4447,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -732, y: 385.43}
+  m_AnchoredPosition: {x: -791, y: 360}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2098304607
@@ -4467,7 +4470,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Your Goal: '
+  m_text: 'Time Left: '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4530,7 +4533,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -76.423386, w: 0}
+  m_margin: {x: 0, y: 0, z: -133.09946, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4544,6 +4547,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2098304605}
   m_CullTransparentMesh: 1
+--- !u!114 &2098304609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098304605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33eab52228e5c144eb9d71cd2ff2dbdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerText: {fileID: 2098304607}
 --- !u!114 &2120151878 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2078712288770024455, guid: 23ff9d861acd03c4baa3102ef53190c4, type: 3}
