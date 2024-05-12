@@ -16,16 +16,22 @@ public class StartGame : MonoBehaviour
     public AudioSource BGM;
     GameManager GM;
     public GameObject ScoreDisplayer;
+
+    public GameObject Instructions;
     // Start is called before the first frame update
     void Start()
     {
         GM = FindObjectOfType<GameManager>();
 
         GlobalLight.color = Color.black;
+
         ScoreDisplayer.SetActive(false);
         Screen.SetActive(false);
+        Instructions.SetActive(false);
         Spotlight.gameObject.SetActive(false);
+
         BGM.Stop();
+
     }
 
     // Update is called once per frame
@@ -46,14 +52,20 @@ public class StartGame : MonoBehaviour
         GetComponent<Button>().interactable = false;
 
         yield return new WaitForSeconds(2);
-
-        GM.GameStart();
         GlobalLight.color = Color.white;
+
+        yield return new WaitForSeconds(2);
+        Title.SetActive(false);
+        Instructions.SetActive(true);
+
+        yield return new WaitForSeconds(8);
+        Instructions.SetActive(false);
+        GM.GameStart();
+
         Spotlight.gameObject.SetActive(true);
         ScoreDisplayer.SetActive(true);
 
         yield return new WaitForSeconds(2);
-        Title.SetActive(false);
         BGM.Play();
 
         yield return new WaitForSeconds(1);
