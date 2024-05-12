@@ -53,6 +53,7 @@ public class StartGame : MonoBehaviour
 
         yield return new WaitForSeconds(2);
         GlobalLight.color = Color.white;
+        ScoreDisplayer.SetActive(true);
 
         yield return new WaitForSeconds(2);
         Title.SetActive(false);
@@ -63,7 +64,6 @@ public class StartGame : MonoBehaviour
         GM.GameStart();
 
         Spotlight.gameObject.SetActive(true);
-        ScoreDisplayer.SetActive(true);
 
         yield return new WaitForSeconds(2);
         BGM.Play();
