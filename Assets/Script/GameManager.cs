@@ -127,7 +127,7 @@ public class GameManager : MonoBehaviour
 
         timer = orderTime;
         OrderClosed = false;
-        targetState = (SteakState.SteakCookState)Random.Range(1, 4);
+        targetState = (SteakState.SteakCookState)Random.Range(1, 5);
         orderPanel.NewOrder(targetState);
     }
 
