@@ -11,6 +11,9 @@ TagManager:
   - wellDone
   - overcooked
   - rare
+  - Table
+  - KillZone
+  - Steak
   layers:
   - Default
   - TransparentFX

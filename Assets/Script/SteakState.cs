@@ -19,17 +19,21 @@ public class SteakState : MonoBehaviour
     public float cookTime = 0; 
     public float requiredTime = 10;
 
+    public AudioClip FlopNoise;
+    AudioSource audioSource;
+    AudioSource SFXPlayer;
     private void Start()
     {
         GM = FindObjectOfType<GameManager>();
         cpuTemp = FindObjectOfType<CPUTemp>();
+        audioSource = GetComponent<AudioSource>();
+        SFXPlayer = GameObject.Find("SFXPlayer").GetComponent<AudioSource>();
     }
 
     void Update()
     {
         if (isCooking && cpuTemp != null)
         {
-            
             float temperature = cpuTemp.GetCurrentTemperature(); 
 
             
@@ -46,7 +50,9 @@ public class SteakState : MonoBehaviour
     {
         if (other.gameObject.tag == "cpu")
         {
-            isCooking = true; 
+            isCooking = true;
+            audioSource.Play();
+            StartCoroutine(Fade(audioSource, 1, 1));
         }
     }
 
@@ -55,6 +61,22 @@ public class SteakState : MonoBehaviour
         if (other.gameObject.tag == "cpu")
         {
             isCooking = false;
+            StartCoroutine(Fade(audioSource, 1, 0));
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Table")
+        {
+            SFXPlayer.clip = FlopNoise;
+            SFXPlayer.Play();
+        }
+
+        if (collision.gameObject.tag == "KillZone")
+        {
+            Destroy(gameObject);
+            GM.SpawnNewSteak();
         }
     }
 
@@ -93,5 +115,17 @@ public class SteakState : MonoBehaviour
         GM.SpawnNewSteak();
         GM.CompleteOrder();
         Destroy(gameObject);
+    }
+
+    public IEnumerator Fade(AudioSource source, float dur, float targetVolume)
+    {
+        float time = 0f;
+        float startVolume = source.volume;
+        while(time < dur)
+        {
+            time += Time.deltaTime;
+            source.volume = Mathf.Lerp(startVolume, targetVolume, time / dur);
+            yield return null;
+        }
     }
 }

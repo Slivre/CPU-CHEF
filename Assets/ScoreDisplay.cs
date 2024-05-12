@@ -22,6 +22,6 @@ public class ScoreDisplay : MonoBehaviour
 
     void UpdateScoreDisplay()
     {
-       scoreText.text = "Score: " + gameManager.Score;
+       scoreText.text = "$" + gameManager.Score;
     }
 }
