@@ -31,7 +31,10 @@ public class Dragable : MonoBehaviour
         ClickPosOffset = parent.transform.position - MousePosOnClick;
 
         ClickPosOffset = Camera.main.ScreenToWorldPoint(MousePos) - parent.transform.position;
-        collider.isTrigger = true;
+        if (collider != false)
+        {
+            collider.isTrigger = true;
+        }
     }
 
     public void Drag()
@@ -53,6 +56,10 @@ public class Dragable : MonoBehaviour
         {
             rb.gravityScale = 3;
         }
-        collider.isTrigger =false;
+
+        if (collider != false)
+        {
+            collider.isTrigger = false;
+        }
     }
 }

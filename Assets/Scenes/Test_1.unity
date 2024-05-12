@@ -1768,20 +1768,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6063723803917773475, guid: a6f4cce4f5aac384f982bbfd1ce5c69d, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6063723803917773475, guid: a6f4cce4f5aac384f982bbfd1ce5c69d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4a399f7134fe5b44a8f1132e0d4b8821, type: 3}
+    - target: {fileID: 6063723803917773475, guid: a6f4cce4f5aac384f982bbfd1ce5c69d, type: 3}
       propertyPath: m_Color.b
-      value: 0.9254902
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6063723803917773475, guid: a6f4cce4f5aac384f982bbfd1ce5c69d, type: 3}
       propertyPath: m_Color.g
-      value: 0.49411765
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6063723803917773475, guid: a6f4cce4f5aac384f982bbfd1ce5c69d, type: 3}
       propertyPath: m_Color.r
-      value: 0.6146937
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8637467594007451040, guid: a6f4cce4f5aac384f982bbfd1ce5c69d, type: 3}
       propertyPath: m_Name
-      value: AppIcon (2)
+      value: Doodle Icon
       objectReference: {fileID: 0}
     - target: {fileID: 8637467594007451040, guid: a6f4cce4f5aac384f982bbfd1ce5c69d, type: 3}
       propertyPath: m_IsActive
@@ -5227,7 +5235,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1265802588
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7523,13 +7531,73 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 379418500}
     m_Modifications:
+    - target: {fileID: 660510079833518734, guid: 3e4742cf6160345448cf98b1da5f9741, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 669.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 660510079833518734, guid: 3e4742cf6160345448cf98b1da5f9741, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 450.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 660510079833518734, guid: 3e4742cf6160345448cf98b1da5f9741, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 21.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1440535300642279690, guid: 3e4742cf6160345448cf98b1da5f9741, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 94b0d276b00ac8c4fb71ff7f227b5fdf, type: 3}
+    - target: {fileID: 1440535300642279690, guid: 3e4742cf6160345448cf98b1da5f9741, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1440535300642279690, guid: 3e4742cf6160345448cf98b1da5f9741, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1440535300642279690, guid: 3e4742cf6160345448cf98b1da5f9741, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1797956779332255599, guid: 3e4742cf6160345448cf98b1da5f9741, type: 3}
       propertyPath: m_Name
-      value: App3
+      value: Doodle
       objectReference: {fileID: 0}
     - target: {fileID: 1797956779332255599, guid: 3e4742cf6160345448cf98b1da5f9741, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3633541009390792007, guid: 3e4742cf6160345448cf98b1da5f9741, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3633541009390792007, guid: 3e4742cf6160345448cf98b1da5f9741, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796916188924673964, guid: 3e4742cf6160345448cf98b1da5f9741, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 327.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796916188924673964, guid: 3e4742cf6160345448cf98b1da5f9741, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 205
+      objectReference: {fileID: 0}
+    - target: {fileID: 5174024437405168610, guid: 3e4742cf6160345448cf98b1da5f9741, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 669.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 5174024437405168610, guid: 3e4742cf6160345448cf98b1da5f9741, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 37.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 5174024437405168610, guid: 3e4742cf6160345448cf98b1da5f9741, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 21.601
+      objectReference: {fileID: 0}
+    - target: {fileID: 5174024437405168610, guid: 3e4742cf6160345448cf98b1da5f9741, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 206.78
       objectReference: {fileID: 0}
     - target: {fileID: 6923435497533747031, guid: 3e4742cf6160345448cf98b1da5f9741, type: 3}
       propertyPath: m_Pivot.x
@@ -7593,11 +7661,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6923435497533747031, guid: 3e4742cf6160345448cf98b1da5f9741, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 267.20416
+      value: -107
       objectReference: {fileID: 0}
     - target: {fileID: 6923435497533747031, guid: 3e4742cf6160345448cf98b1da5f9741, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 48.431274
+      value: -10.1
       objectReference: {fileID: 0}
     - target: {fileID: 6923435497533747031, guid: 3e4742cf6160345448cf98b1da5f9741, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

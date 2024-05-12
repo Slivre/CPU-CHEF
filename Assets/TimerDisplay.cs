@@ -17,6 +17,6 @@ public class TimerDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {            
-        timerText.text = $"Time Left: {gameManager.timer:F2}";
+        timerText.text = $"{gameManager.timer:F2}";
     }
 }
