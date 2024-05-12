@@ -1450,6 +1450,7 @@ MonoBehaviour:
   Title: {fileID: 1265802587}
   BGM: {fileID: 785923627}
   ScoreDisplayer: {fileID: 287335823}
+  Instructions: {fileID: 656991402}
 --- !u!114 &221435008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2719,6 +2720,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 622140014}
   m_CullTransparentMesh: 1
+--- !u!1 &656991402 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5192114520210051224, guid: 543749a1d97192e4ba52905401031dd2, type: 3}
+  m_PrefabInstance: {fileID: 1846459780568906434}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &663975682
 GameObject:
   m_ObjectHideFlags: 0
@@ -5235,7 +5241,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1265802588
 RectTransform:
   m_ObjectHideFlags: 0
