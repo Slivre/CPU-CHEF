@@ -9,6 +9,10 @@ public class CPUTemp : MonoBehaviour
     public float TargetTemperture;
 
     public float AccelerationSpeed;
+
+    public float CrashTemperture;
+    public float RestartTemperture;
+
     // Start is called before the first frame update
     void Start()
     {

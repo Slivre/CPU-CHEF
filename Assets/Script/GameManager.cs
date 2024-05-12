@@ -12,16 +12,30 @@ public class GameManager : MonoBehaviour
     public OrderPanel orderPanel;
 
     public SteakState.SteakCookState targetState;
+    public CPUTemp cpuTemp;
+
+    public GameObject CrashScreen;
+    public AppButton[] closeButtons;
+
     // Start is called before the first frame update
     void Start()
     {
         NewOrder();
+        cpuTemp = FindObjectOfType<CPUTemp>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(cpuTemp.CPUTemperture >= cpuTemp.CrashTemperture)
+        {
+            Crash();
+        }
+
+        else if(cpuTemp.CPUTemperture <= cpuTemp.RestartTemperture)
+        {
+            Restart();
+        }
     }
 
     public void SpawnNewSteak()
@@ -39,5 +53,19 @@ public class GameManager : MonoBehaviour
     {
         Score += points; 
         Debug.Log("Score: " + Score);
+    }
+
+    public void Crash()
+    {
+        CrashScreen.SetActive(true);
+        foreach(AppButton closebutton in closeButtons)
+        {
+            closebutton.CloseApp();
+        }
+    }
+
+    public void Restart()
+    {
+        CrashScreen.SetActive(false);
     }
 }
