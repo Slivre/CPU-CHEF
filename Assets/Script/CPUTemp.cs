@@ -10,8 +10,8 @@ public class CPUTemp : MonoBehaviour
 
     public float AccelerationSpeed;
 
-    public float CrashTemperture;
-    public float RestartTemperture;
+    public float MaxTemp;
+    public float MinTemp;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +35,8 @@ public class CPUTemp : MonoBehaviour
         {
             CPUTemperture += AccelerationSpeed * Time.deltaTime;
         }
+
+        TargetTemperture = Mathf.Clamp(TargetTemperture, MinTemp, 999f);
     }
 
     public void ModifiyTargetTemp(float ModValue)

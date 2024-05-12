@@ -721,6 +721,8 @@ MonoBehaviour:
   orderTime: 15
   timer: 0
   newOrderDelay: 3
+  TempIncreaseInterval: 1
+  CurrentInterval: 0
 --- !u!4 &153623900
 Transform:
   m_ObjectHideFlags: 0
@@ -1372,7 +1374,7 @@ PrefabInstance:
       objectReference: {fileID: 2120151878}
     - target: {fileID: 641141504347662322, guid: a6f4cce4f5aac384f982bbfd1ce5c69d, type: 3}
       propertyPath: TempModifier
-      value: 50
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 1547338102757561264, guid: a6f4cce4f5aac384f982bbfd1ce5c69d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1460,7 +1462,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5865521515709580040, guid: a6f4cce4f5aac384f982bbfd1ce5c69d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 65.76872
+      value: 12.76872
       objectReference: {fileID: 0}
     - target: {fileID: 5865521515709580040, guid: a6f4cce4f5aac384f982bbfd1ce5c69d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2096,16 +2098,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2078712288770024455, guid: 23ff9d861acd03c4baa3102ef53190c4, type: 3}
+      propertyPath: MaxTemp
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 2078712288770024455, guid: 23ff9d861acd03c4baa3102ef53190c4, type: 3}
+      propertyPath: MinTemp
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2078712288770024455, guid: 23ff9d861acd03c4baa3102ef53190c4, type: 3}
       propertyPath: CPUTemperture
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2078712288770024455, guid: 23ff9d861acd03c4baa3102ef53190c4, type: 3}
       propertyPath: CrashTemperture
-      value: 100
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 2078712288770024455, guid: 23ff9d861acd03c4baa3102ef53190c4, type: 3}
       propertyPath: AccelerationSpeed
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2078712288770024455, guid: 23ff9d861acd03c4baa3102ef53190c4, type: 3}
       propertyPath: RestartTemperture
@@ -3317,7 +3327,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -427.4, y: 12.568724}
+  m_AnchoredPosition: {x: -427.4, y: -40.43128}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1079701572
@@ -4422,7 +4432,7 @@ PrefabInstance:
       objectReference: {fileID: 2120151878}
     - target: {fileID: 641141504347662322, guid: a6f4cce4f5aac384f982bbfd1ce5c69d, type: 3}
       propertyPath: TempModifier
-      value: 25
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 1547338102757561264, guid: a6f4cce4f5aac384f982bbfd1ce5c69d, type: 3}
       propertyPath: m_Colors.m_PressedColor.b
@@ -4530,7 +4540,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5865521515709580040, guid: a6f4cce4f5aac384f982bbfd1ce5c69d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 118.66873
+      value: 65.668724
       objectReference: {fileID: 0}
     - target: {fileID: 5865521515709580040, guid: a6f4cce4f5aac384f982bbfd1ce5c69d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5478,7 +5488,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -324, y: 218.00002}
+  m_AnchoredPosition: {x: -324, y: 217}
   m_SizeDelta: {x: 286.3484, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1670499300
@@ -5541,13 +5551,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -5577,7 +5587,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 16.087524, y: 0, z: 0, w: 0}
+  m_margin: {x: 16.087524, y: 0, z: -126.10449, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -6593,7 +6603,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8693158329536151215, guid: 3e4742cf6160345448cf98b1da5f9741, type: 3}
       propertyPath: TempModifier
-      value: 50
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7592,7 +7602,7 @@ PrefabInstance:
       objectReference: {fileID: 2120151878}
     - target: {fileID: 641141504347662322, guid: a6f4cce4f5aac384f982bbfd1ce5c69d, type: 3}
       propertyPath: TempModifier
-      value: 20
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1547338102757561264, guid: a6f4cce4f5aac384f982bbfd1ce5c69d, type: 3}
       propertyPath: m_Colors.m_PressedColor.b
@@ -7696,7 +7706,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5865521515709580040, guid: a6f4cce4f5aac384f982bbfd1ce5c69d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 174
+      value: 121
       objectReference: {fileID: 0}
     - target: {fileID: 5865521515709580040, guid: a6f4cce4f5aac384f982bbfd1ce5c69d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7794,7 +7804,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4004956080045971075, guid: c6063f8b3469f28488412341b7a0ec0a, type: 3}
       propertyPath: TempModifier
-      value: 20
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4134741378522613235, guid: c6063f8b3469f28488412341b7a0ec0a, type: 3}
       propertyPath: m_Pivot.x
@@ -7995,7 +8005,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3135648715784860753, guid: e2c33072860703d469a62436bd743616, type: 3}
       propertyPath: TempModifier
-      value: 25
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 6715476111416667287, guid: e2c33072860703d469a62436bd743616, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size

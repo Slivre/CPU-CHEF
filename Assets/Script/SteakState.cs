@@ -37,15 +37,16 @@ public class SteakState : MonoBehaviour
     {
         if (isCooking && cpuTemp != null)
         {
-            float temperature = cpuTemp.GetCurrentTemperature(); 
+            float temperature = cpuTemp.GetCurrentTemperature();
 
-            
-            cookTime += Time.deltaTime * temperature / 100;
+            float TempMod = (temperature - cpuTemp.MinTemp)* 0.05f;
+
+            cookTime += Time.deltaTime * TempMod;
 
             
             cookPercent = cookTime / requiredTime;
 
-            UpdateSteakSprite(cookPercent);
+            UpdateSteakSprite();
         }
     }
 
@@ -85,7 +86,7 @@ public class SteakState : MonoBehaviour
         }
     }
 
-    void UpdateSteakSprite(float cookPercent)
+    void UpdateSteakSprite()
     {
         if (cookPercent < 0.2f)
         {

@@ -19,7 +19,7 @@ public class CrashProgressBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float safeTemp = cpuTemp.CrashTemperture - cpuTemp.RestartTemperture;
+        float safeTemp = cpuTemp.MaxTemp - cpuTemp.MinTemp;
         TempPercecntage = (cpuTemp.CPUTemperture -safeTemp) / safeTemp;
 
         slider.value = TempPercecntage;

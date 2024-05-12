@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public GameObject CrashScreen;
     public GameObject FailIcon;
     public GameObject SucessIcon;
+
     public AppButton[] closeButtons;
 
     public float orderTime = 10.0f;
@@ -24,6 +25,8 @@ public class GameManager : MonoBehaviour
     bool PauseTimer = true;
     public float newOrderDelay;
 
+    public float TempIncreaseInterval = 1f;
+    public float CurrentInterval;
 
     // Start is called before the first frame update
     void Start()
@@ -37,12 +40,12 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (cpuTemp.CPUTemperture >= cpuTemp.CrashTemperture)
+        if (cpuTemp.CPUTemperture >= cpuTemp.MaxTemp)
         {
             Crash();
         }
 
-        else if (cpuTemp.CPUTemperture <= cpuTemp.RestartTemperture)
+        else if (cpuTemp.CPUTemperture <= cpuTemp.MinTemp)
         {
             Restart();
         }
@@ -55,6 +58,35 @@ public class GameManager : MonoBehaviour
                 CompleteOrder(false);
                 PauseTimer = true;
             }
+        }
+
+        CurrentInterval += Time.deltaTime;
+        if (CurrentInterval >= TempIncreaseInterval)
+        {
+            ChangeTemperture();
+            CurrentInterval = 0;
+        }
+
+    }
+
+    public void ChangeTemperture()
+    {
+        int ClosedApp = 0;
+        foreach(AppButton app in closeButtons)
+        {
+            if (app.gameObject.activeInHierarchy)
+            {
+                cpuTemp.TargetTemperture++;
+            }
+            else
+            {
+                ClosedApp++;
+            }
+        }
+
+        if (ClosedApp >= closeButtons.Length)
+        {
+            cpuTemp.TargetTemperture -= 3;
         }
     }
 
