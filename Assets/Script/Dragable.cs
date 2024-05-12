@@ -11,10 +11,12 @@ public class Dragable : MonoBehaviour
     Vector3 ClickPosOffset = Vector3.zero;
 
     public bool isUI;
+
+    Collider2D collider;
     // Start is called before the first frame update
     void Start()
     {
-        
+        collider = GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -29,6 +31,7 @@ public class Dragable : MonoBehaviour
         ClickPosOffset = parent.transform.position - MousePosOnClick;
 
         ClickPosOffset = Camera.main.ScreenToWorldPoint(MousePos) - parent.transform.position;
+        collider.isTrigger = true;
     }
 
     public void Drag()
@@ -50,5 +53,6 @@ public class Dragable : MonoBehaviour
         {
             rb.gravityScale = 3;
         }
+        collider.isTrigger =false;
     }
 }

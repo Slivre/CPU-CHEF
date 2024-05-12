@@ -15,18 +15,23 @@ public class GameManager : MonoBehaviour
     public CPUTemp cpuTemp;
 
     public GameObject CrashScreen;
+    public GameObject FailIcon;
+    public GameObject SucessIcon;
     public AppButton[] closeButtons;
 
     public float orderTime = 10.0f;
     public float timer;
+    bool PauseTimer = true;
+    public float newOrderDelay;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        NewOrder();
+        Invoke("NewOrder",2f);
         cpuTemp = FindObjectOfType<CPUTemp>();
-        timer = orderTime;
+        SucessIcon.SetActive(false);
+        FailIcon.SetActive(false);
     }
 
     // Update is called once per frame
@@ -42,13 +47,14 @@ public class GameManager : MonoBehaviour
             Restart();
         }
 
-        timer -= Time.deltaTime;
-        if (timer <= 0)
+        if (!PauseTimer)
         {
-            FailOrder();
-            NewOrder();
-            timer = orderTime; 
-
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                CompleteOrder(false);
+                PauseTimer = true;
+            }
         }
     }
 
@@ -59,28 +65,31 @@ public class GameManager : MonoBehaviour
 
     public void NewOrder()
     {
+        SucessIcon.SetActive(false);
+        FailIcon.SetActive(false);
+
+        timer = orderTime;
+        PauseTimer = false;
         targetState = (SteakState.SteakCookState)Random.Range(1, 4);
         orderPanel.NewOrder(targetState);
     }
 
-    public void CompleteOrder()
+    public void CompleteOrder(bool Sucess)
     {
-        AddScore(10);
-        ResetTimer();
-        NewOrder();
-    }
-
-    private void ResetTimer()
-    {
-        timer = orderTime;
-    }
-
-    private void FailOrder()
-    {
-        Score -= 5;
-        ResetTimer();
-        NewOrder();
-
+        PauseTimer = true;
+        Invoke("NewOrder", newOrderDelay);
+        if (Sucess)
+        {
+            Score += 10;
+            SucessIcon.SetActive(true);
+            SucessIcon.GetComponent<Animator>().Play("SucessSpawn");
+        }
+        else
+        {
+            Score -= 5;
+            FailIcon.SetActive(true);
+            FailIcon.GetComponent<Animator>().Play("FailSpawn");
+        }
     }
 
     public void AddScore(int points)

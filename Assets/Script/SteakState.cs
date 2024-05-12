@@ -22,12 +22,15 @@ public class SteakState : MonoBehaviour
     public AudioClip FlopNoise;
     AudioSource audioSource;
     AudioSource SFXPlayer;
+
+    public GameObject Smoke;
     private void Start()
     {
         GM = FindObjectOfType<GameManager>();
         cpuTemp = FindObjectOfType<CPUTemp>();
         audioSource = GetComponent<AudioSource>();
         SFXPlayer = GameObject.Find("SFXPlayer").GetComponent<AudioSource>();
+        Smoke.SetActive(false);
     }
 
     void Update()
@@ -53,6 +56,7 @@ public class SteakState : MonoBehaviour
             isCooking = true;
             audioSource.Play();
             StartCoroutine(Fade(audioSource, 1, 1));
+            Smoke.SetActive(true);
         }
     }
 
@@ -62,6 +66,7 @@ public class SteakState : MonoBehaviour
         {
             isCooking = false;
             StartCoroutine(Fade(audioSource, 1, 0));
+            Smoke.SetActive(false);
         }
     }
 
@@ -113,7 +118,16 @@ public class SteakState : MonoBehaviour
     {
         Debug.Log("Checkout");
         GM.SpawnNewSteak();
-        GM.CompleteOrder();
+
+        if (currentCookState == GM.targetState)
+        {
+            GM.CompleteOrder(true);
+        }
+        else if(currentCookState != GM.targetState)
+        {
+            GM.CompleteOrder(false);
+        }
+        
         Destroy(gameObject);
     }
 
