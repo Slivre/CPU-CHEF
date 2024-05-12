@@ -17,24 +17,38 @@ public class GameManager : MonoBehaviour
     public GameObject CrashScreen;
     public AppButton[] closeButtons;
 
+    public float orderTime = 10.0f;
+    public float timer;
+
+
     // Start is called before the first frame update
     void Start()
     {
         NewOrder();
         cpuTemp = FindObjectOfType<CPUTemp>();
+        timer = orderTime;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(cpuTemp.CPUTemperture >= cpuTemp.CrashTemperture)
+        if (cpuTemp.CPUTemperture >= cpuTemp.CrashTemperture)
         {
             Crash();
         }
 
-        else if(cpuTemp.CPUTemperture <= cpuTemp.RestartTemperture)
+        else if (cpuTemp.CPUTemperture <= cpuTemp.RestartTemperture)
         {
             Restart();
+        }
+
+        timer -= Time.deltaTime;
+        if (timer <= 0)
+        {
+            FailOrder();
+            NewOrder();
+            timer = orderTime; 
+
         }
     }
 
@@ -49,10 +63,29 @@ public class GameManager : MonoBehaviour
         orderPanel.NewOrder(targetState);
     }
 
+    public void CompleteOrder()
+    {
+        AddScore(10);
+        ResetTimer();
+        NewOrder();
+    }
+
+    private void ResetTimer()
+    {
+        timer = orderTime;
+    }
+
+    private void FailOrder()
+    {
+        Score -= 5;
+        ResetTimer();
+        NewOrder();
+
+    }
+
     public void AddScore(int points)
     {
         Score += points; 
-        Debug.Log("Score: " + Score);
     }
 
     public void Crash()
