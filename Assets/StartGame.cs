@@ -58,7 +58,7 @@ public class StartGame : MonoBehaviour
         Title.SetActive(false);
         Instructions.SetActive(true);
 
-        yield return new WaitForSeconds(8);
+        yield return new WaitForSeconds(17);
         Instructions.SetActive(false);
         GM.GameStart();
 
