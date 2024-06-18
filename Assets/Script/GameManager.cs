@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public string PlayerName;
     public int Score;
+    public int HighScore;
     public bool SteakInScene;
 
     SaveSystem saveSystem;
-    public SO_HighScoreList highScoreList;
 
     public Transform StakeSpawn;
     public GameObject Steak;
@@ -38,9 +39,19 @@ public class GameManager : MonoBehaviour
     public bool Paused;
     public GameObject PauseScreen;
 
+    public int GameWorldTime;
+    public TMP_Text GameWorldTimeTxt;
+
+    bool GameEnded;
+    public GameObject EndScreen;
+    public TMP_Text EndScreenScore;
+    public TMP_Text EndScreenHighScore;
+
+
     // Start is called before the first frame update
     void Start()
     {
+        EndScreen.SetActive(false);
         cpuTemp = FindObjectOfType<CPUTemp>();
         SucessIcon.SetActive(false);
         FailIcon.SetActive(false);
@@ -50,42 +61,84 @@ public class GameManager : MonoBehaviour
 
     public void GameStart()
     {
+        GameEnded = false;
+        OrderClosed = true;
+
+        cpuTemp.CPUTemperture = cpuTemp.MinTemp;
+        cpuTemp.TargetTemperture = cpuTemp.MinTemp;
+        foreach (AppButton closebutton in closeButtons)
+        {
+            closebutton.CloseApp();
+        }
+
+        Score = 0;
+        orderPanel.BlankOrder();
+        EndScreen.SetActive(false);
+        GameWorldTime = 6;
+
+        CancelInvoke("GameWorldTimeUpdate");
         Invoke("NewOrder", 2f);
+        Invoke("GameWorldTimeUpdate", 20f);
+    }
+
+    public void GameWorldTimeUpdate()
+    {
+        GameWorldTime++;
+        Invoke("GameWorldTimeUpdate", 20f);
     }
 
     public void GameEnd()
     {
+        if (Score > HighScore)
+        {
+            HighScore = Score;
+        }
+
+        GameEnded = true;
+        EndScreen.SetActive(true);
+        EndScreenScore.text = $"${Score}";
+        EndScreenHighScore.text = $"Highest: ${HighScore}";
         saveSystem.newHighScore(PlayerName, Score);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (cpuTemp.CPUTemperture >= cpuTemp.MaxTemp)
+        if (!GameEnded)
         {
-            Crash();
-        }
-
-        else if (cpuTemp.CPUTemperture <= cpuTemp.MinTemp)
-        {
-            Restart();
-        }
-
-        if (!OrderClosed)
-        {
-            timer -= Time.deltaTime;
-            if (timer <= 0)
+            GameWorldTimeTxt.text = $"{GameWorldTime}PM";
+            if (GameWorldTime >= 12)
             {
-                CompleteOrder(false);
-                OrderClosed = true;
+                GameEnd();
             }
-        }
 
-        CurrentInterval += Time.deltaTime;
-        if (CurrentInterval >= TempIncreaseInterval)
-        {
-            ChangeTemperture();
-            CurrentInterval = 0;
+            if (cpuTemp.CPUTemperture >= cpuTemp.MaxTemp)
+            {
+                Crash();
+            }
+
+            else if (cpuTemp.CPUTemperture <= cpuTemp.MinTemp)
+            {
+                Restart();
+            }
+
+            if (!OrderClosed)
+            {
+                timer -= Time.deltaTime;
+                if (timer <= 0)
+                {
+                    CompleteOrder(false);
+                    OrderClosed = true;
+                }
+            }
+
+            CurrentInterval += Time.deltaTime;
+            if (CurrentInterval >= TempIncreaseInterval)
+            {
+                ChangeTemperture();
+                CurrentInterval = 0;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -94,6 +147,11 @@ public class GameManager : MonoBehaviour
         }
         Time.timeScale = Paused ? 0 : 1;
         PauseScreen.SetActive(Paused);
+    }
+
+    public void reloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void pauseGame()

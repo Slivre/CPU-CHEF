@@ -47,4 +47,12 @@ public class OrderPanel : MonoBehaviour
         SteakCookLevelText.text = targetCookState.ToString();
         SteakImage.sprite = CookStateSprite[(int)targetCookState];
     }
+
+    public void BlankOrder()
+    {
+        OrderNumberText.text = "0000";
+        CustomerNameText.text = " ";
+        SteakCookLevelText.text = "Null";
+        SteakImage.sprite = CookStateSprite[5];
+    }
 }
