@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public string PlayerName;
     public int Score;
     public bool SteakInScene;
+
+    SaveSystem saveSystem;
+    public SO_HighScoreList highScoreList;
 
     public Transform StakeSpawn;
     public GameObject Steak;
@@ -41,11 +45,17 @@ public class GameManager : MonoBehaviour
         SucessIcon.SetActive(false);
         FailIcon.SetActive(false);
         audioSource = GetComponent<AudioSource>();
+        saveSystem = FindObjectOfType<SaveSystem>();
     }
 
     public void GameStart()
     {
         Invoke("NewOrder", 3f);
+    }
+
+    public void GameEnd()
+    {
+        saveSystem.newHighScore(PlayerName, Score);
     }
 
     // Update is called once per frame

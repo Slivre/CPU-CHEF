@@ -18,6 +18,7 @@ public class StartGame : MonoBehaviour
     public GameObject ScoreDisplayer;
 
     public GameObject Instructions;
+    public GameObject SkipButton;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +30,7 @@ public class StartGame : MonoBehaviour
         Screen.SetActive(false);
         Instructions.SetActive(false);
         Spotlight.gameObject.SetActive(false);
-
+        SkipButton.SetActive(false);
         BGM.Stop();
 
     }
@@ -58,6 +59,7 @@ public class StartGame : MonoBehaviour
         yield return new WaitForSeconds(2);
         Title.SetActive(false);
         Instructions.SetActive(true);
+        SkipButton.SetActive(true);
 
         yield return new WaitForSeconds(17);
         Instructions.SetActive(false);
@@ -72,5 +74,18 @@ public class StartGame : MonoBehaviour
         GM.SpawnNewSteak();
 
         yield return null;
+    }
+
+    public void skip()
+    {
+        StopCoroutine(Cor_StartGame());
+        GlobalLight.color = Color.white;
+        ScoreDisplayer.SetActive(true);
+        Title.SetActive(false);
+        Instructions.SetActive(false);
+        GM.GameStart();
+        Spotlight.gameObject.SetActive(true);
+        BGM.Play();
+        GM.SpawnNewSteak();
     }
 }
