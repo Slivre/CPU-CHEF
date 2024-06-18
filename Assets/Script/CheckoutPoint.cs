@@ -25,9 +25,9 @@ public class CheckoutPoint : MonoBehaviour
         SteakState steak = collision.GetComponent<SteakState>();
         if (steak != null && collision.isTrigger!=true && !GM.OrderClosed)
         {
-            steak.CheckOut();
+            bool SteakCookSuccess = steak.CheckOut();
             GameObject NewSteakPlate = Instantiate(SteakPlate, Vector3.zero,Quaternion.identity);
-            NewSteakPlate.GetComponent<SteakPlate>().InitializeSteak(collision.gameObject.GetComponent<SpriteRenderer>().sprite);
+            NewSteakPlate.GetComponent<SteakPlate>().InitializeSteak(collision.gameObject.GetComponent<SpriteRenderer>().sprite, SteakCookSuccess);
         }
     }
 }

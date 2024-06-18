@@ -9,6 +9,7 @@ public class SaveSystem : MonoBehaviour
     public TMP_InputField PlayerName;
 
     public SO_HighScoreList scoreListObj;
+    public TMP_Text playerNameTxt;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,7 @@ public class SaveSystem : MonoBehaviour
             PlayerPrefs.SetInt(PlayerName.text, 0);
         }
         GM.PlayerName = PlayerName.text;
+        playerNameTxt.text = PlayerName.text;
     }
 
     public void newHighScore(string NewPlayerName, int NewHighScore)

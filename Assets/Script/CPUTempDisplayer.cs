@@ -17,5 +17,18 @@ public class CPUTempDisplayer : MonoBehaviour
     void Update()
     {
         text.text =  $"CPUTemp: {Mathf.RoundToInt(cpuTemp.CPUTemperture)}";
+
+        if (cpuTemp.CPUTemperture >= 125)
+        {
+            text.color = Color.red;
+        }
+        else if(cpuTemp.CPUTemperture >= 100 && cpuTemp.CPUTemperture < 125)
+        {
+            text.color = Color.yellow;
+        }
+        else
+        {
+            text.color = Color.white;
+        }
     }
 }

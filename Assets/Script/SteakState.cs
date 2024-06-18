@@ -116,21 +116,22 @@ public class SteakState : MonoBehaviour
         steakRenderer.sprite = CookStateSprite[(int)currentCookState];
     }
 
-    public void CheckOut()
+    public bool CheckOut()
     {
         Debug.Log("Checkout");
         GM.SpawnNewSteak();
-
+        Destroy(gameObject);
         if (currentCookState == GM.targetState)
         {
             GM.CompleteOrder(true);
+            return true;
         }
         else if(currentCookState != GM.targetState)
         {
             GM.CompleteOrder(false);
+            return false;
         }
-        
-        Destroy(gameObject);
+        return false;
     }
 
     public IEnumerator Fade(AudioSource source, float dur, float targetVolume)

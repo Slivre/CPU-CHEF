@@ -19,15 +19,19 @@ public class StartGame : MonoBehaviour
 
     public GameObject Instructions;
     public GameObject SkipButton;
+    public GameObject UsernameEnter;
+    public GameObject Loading;
+
+    Coroutine RunningCoroutine;
     // Start is called before the first frame update
     void Start()
     {
         GM = FindObjectOfType<GameManager>();
-
+        UsernameEnter.SetActive(true);
         GlobalLight.color = Color.black;
-
+        Title.SetActive(true);
         ScoreDisplayer.SetActive(false);
-        Screen.SetActive(false);
+        Screen.SetActive(true);
         Instructions.SetActive(false);
         Spotlight.gameObject.SetActive(false);
         SkipButton.SetActive(false);
@@ -41,29 +45,31 @@ public class StartGame : MonoBehaviour
         
     }
 
-    public void OnStartPressed()
+    public void OnEnterPressed()
     {
-        StartCoroutine(Cor_StartGame());
+        RunningCoroutine = StartCoroutine(Cor_StartGame());
+        UsernameEnter.SetActive(false);
+        Loading.SetActive(true);
     }
 
     public IEnumerator Cor_StartGame()
     {
-        Screen.SetActive(true);
         GetComponent<Image>().color = Color.black;
-        GetComponent<Button>().interactable = false;
-
-        yield return new WaitForSeconds(2);
         GlobalLight.color = Color.white;
         ScoreDisplayer.SetActive(true);
 
-        yield return new WaitForSeconds(2);
-        Title.SetActive(false);
+        yield return new WaitForSeconds(3);
+
+        Loading.SetActive(false);
         Instructions.SetActive(true);
         SkipButton.SetActive(true);
+        Title.SetActive(false);
 
         yield return new WaitForSeconds(17);
         Instructions.SetActive(false);
         GM.GameStart();
+        SkipButton.SetActive(false);
+        Debug.Log("BAM");
 
         Spotlight.gameObject.SetActive(true);
 
@@ -78,7 +84,9 @@ public class StartGame : MonoBehaviour
 
     public void skip()
     {
-        StopCoroutine(Cor_StartGame());
+        SkipButton.SetActive(false);
+        StopCoroutine(RunningCoroutine);
+
         GlobalLight.color = Color.white;
         ScoreDisplayer.SetActive(true);
         Title.SetActive(false);

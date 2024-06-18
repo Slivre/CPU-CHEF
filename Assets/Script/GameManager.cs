@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
 
     public void GameStart()
     {
-        Invoke("NewOrder", 3f);
+        Invoke("NewOrder", 2f);
     }
 
     public void GameEnd()
